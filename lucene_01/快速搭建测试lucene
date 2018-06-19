@@ -1,0 +1,8 @@
+步一：创建javaweb工程，取名叫lucene-day01
+步二：导入Lucene相关的jar包
+  lucene-core-3.0.2.jar【Lucene核心】
+  lucene-analyzers-3.0.2.jar【分词器】
+  lucene-highlighter-3.0.2.jar【Lucene会将搜索出来的字，高亮显示，提示用户】
+  lucene-memory-3.0.2.jar【索引库优化策略】
+3.创建实体类
+4.创建测试类
