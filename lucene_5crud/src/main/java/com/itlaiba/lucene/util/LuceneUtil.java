@@ -10,6 +10,7 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field.Index;
 import org.apache.lucene.document.Field.Store;
+import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriter.MaxFieldLength;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -30,6 +31,18 @@ public class LuceneUtil {
 	private static Analyzer a;
 	private static MaxFieldLength mfl;	
 	
+	static{
+		try {
+			d =  FSDirectory.open(new File("f:/arcitleDBDB"));
+			matchVersion =Version.LUCENE_30;
+			a = new  StandardAnalyzer(matchVersion);
+			mfl = MaxFieldLength.LIMITED;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}	
+	}
+	
 	
 	public static Directory getD() {
 		return d;
@@ -47,17 +60,7 @@ public class LuceneUtil {
 		return mfl;
 	}
 
-	{
-		try {
-			d =  FSDirectory.open(new File("f:/arcitleDBDB"));
-			matchVersion =Version.LUCENE_30;
-			a = new  StandardAnalyzer(matchVersion);
-			mfl = MaxFieldLength.LIMITED;
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}	
-	}
+	
 	
 //	私有构造不让人直接访问
 	private LuceneUtil() {
@@ -108,7 +111,7 @@ public class LuceneUtil {
 	public static void main(String[] args) throws Exception {
 		Article article = new Article(1, "传智", "传智是一个培训机构");
 		Document document = LuceneUtil.java2Document(article);
-		Article a = (Article) LuceneUtil.Document2java(document, Article.class);
-		System.out.println(a);
+//		Article a = (Article) LuceneUtil.Document2java(document, Article.class);
+//		System.out.println(a);
 	}
 }
