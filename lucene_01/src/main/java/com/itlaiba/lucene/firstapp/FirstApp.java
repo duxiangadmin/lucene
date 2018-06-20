@@ -54,6 +54,7 @@ public class FirstApp {
 		MaxFieldLength mfl = MaxFieldLength.LIMITED;
 		
 		IndexWriter indexWriter = new IndexWriter(d, a, mfl);
+		indexWriter.addDocument(document);
 		indexWriter.close();
 				
 	}
