@@ -1,0 +1,15 @@
+创建索引库：
+1）	创建JavaBean对象
+2）	创建Docment对象
+3）	将JavaBean对象所有的属性值，均放到Document对象中去，属性名可以和JavaBean相同或不同
+4）	创建IndexWriter对象
+5）	将Document对象通过IndexWriter对象写入索引库中
+6）	关闭IndexWriter对象
+根据关键字查询索引库中的内容：
+1）	创建IndexSearcher对象
+2）	创建QueryParser对象
+3）	创建Query对象来封装关键字
+4）	用IndexSearcher对象去索引库中查询符合条件的前100条记录，不足100条记录的以实际为准
+5）	获取符合条件的编号
+6）	用indexSearcher对象去索引库中查询编号对应的Document对象
+7）	将Document对象中的所有属性取出，再封装回JavaBean对象中去，并加入到集合中保存，以备将之用
